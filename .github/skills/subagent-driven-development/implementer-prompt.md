@@ -27,7 +27,7 @@ If you have questions about:
 
 Once you're clear on requirements:
 1. Implement exactly what the task specifies
-2. Write tests (following TDD if task says to)
+2. Use test-driven-development for this task: write a failing test first, watch it fail, write the minimal implementation, then watch the test pass
 3. Verify implementation works
 4. Commit your work
 5. Self-review (see below)
@@ -35,6 +35,8 @@ Once you're clear on requirements:
 
 **While you work:** If you encounter something unexpected or unclear, **ask questions**.
 Don't guess or make assumptions.
+
+**TDD is mandatory for feature work, bug fixes, refactors, and behavior changes.** Do not wait for the task text to mention it explicitly.
 
 ## Code Organization
 
@@ -61,6 +63,7 @@ It is always OK to stop and say "this is too hard for me."
 **Completeness:** Did I fully implement everything in the spec?
 **Quality:** Is this my best work? Are names clear and accurate?
 **Discipline:** Did I avoid overbuilding (YAGNI)?
+**TDD:** Did I start with a failing test and verify it failed for the expected reason before writing production code?
 **Testing:** Do tests actually verify behavior (not just mock behavior)?
 
 If you find issues during self-review, fix them now.

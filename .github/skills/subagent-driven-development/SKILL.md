@@ -30,7 +30,7 @@ Execute plan by dispatching fresh subagent per task, with two-stage review after
 2. **Per task:**
    a. Dispatch implementer subagent with full task text + context (see [implementer-prompt.md](./implementer-prompt.md))
    b. If implementer asks questions → answer, re-dispatch
-   c. Implementer implements, tests, commits, self-reviews
+   c. Implementer follows test-driven-development for the task, then implements, tests, commits, self-reviews
    d. Dispatch spec reviewer subagent (see [spec-reviewer-prompt.md](./spec-reviewer-prompt.md))
    e. If spec issues found → implementer fixes → re-review
    f. Dispatch code quality reviewer subagent (see [code-quality-reviewer-prompt.md](./code-quality-reviewer-prompt.md))
@@ -66,6 +66,7 @@ Use the least powerful model that can handle each role:
 
 **Never:**
 - Start implementation on main/master branch without explicit user consent
+- Let implementers skip TDD because the task text did not mention it explicitly
 - Skip reviews (spec compliance OR code quality)
 - Proceed with unfixed issues
 - Dispatch multiple implementation subagents in parallel (conflicts)
@@ -88,5 +89,5 @@ Use the least powerful model that can handle each role:
 - **requesting-code-review** - Code review template for reviewer subagents
 - **finishing-a-development-branch** - Complete development after all tasks
 
-**Subagents should use:**
-- **test-driven-development** - Follow TDD for each task
+**Subagents must use:**
+- **test-driven-development** - Mandatory for each implementation task unless the user explicitly approves an exception

@@ -30,7 +30,7 @@ description: "在当前会话中执行具有独立任务的实现计划时使用
 2. **每个任务：**
    a. 用完整任务文本 + 上下文派发实现者子代理（见 [implementer-prompt.md](./implementer-prompt.md)）
    b. 如果实现者提问 → 回答，重新派发
-   c. 实现者实现、测试、提交、自我审查
+   c. 实现者对该任务遵循 test-driven-development，然后实现、测试、提交、自我审查
    d. 派发规范审查者子代理（见 [spec-reviewer-prompt.md](./spec-reviewer-prompt.md)）
    e. 如果发现规范问题 → 实现者修复 → 重新审查
    f. 派发代码质量审查者子代理（见 [code-quality-reviewer-prompt.md](./code-quality-reviewer-prompt.md)）
@@ -66,6 +66,7 @@ description: "在当前会话中执行具有独立任务的实现计划时使用
 
 **永远不要：**
 - 没有明确用户同意在 main/master 分支上开始实现
+- 因为任务文本没有显式提到 TDD 就允许实现者跳过它
 - 跳过审查（规范合规性或代码质量）
 - 带着未修复的问题继续
 - 并行派发多个实现子代理（冲突）
@@ -88,5 +89,5 @@ description: "在当前会话中执行具有独立任务的实现计划时使用
 - **requesting-code-review** - 审查者子代理的代码审查模板
 - **finishing-a-development-branch** - 所有任务后完成开发
 
-**子代理应该使用：**
-- **test-driven-development** - 遵循每个任务的 TDD
+**子代理必须使用：**
+- **test-driven-development** - 每个实现任务都强制执行，除非用户明确批准例外

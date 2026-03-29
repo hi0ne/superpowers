@@ -162,4 +162,23 @@ fi
 
 echo ""
 
+# Test 10: Verify implementers must use TDD
+echo "Test 10: TDD enforcement..."
+
+output=$(run_claude "In subagent-driven-development, must the implementer subagent follow test-driven-development for each task even if the task text does not explicitly say to use TDD? Answer yes or no, then explain briefly." 30)
+
+if assert_contains "$output" "yes\|must\|required\|always" "Requires TDD by default"; then
+    : # pass
+else
+    exit 1
+fi
+
+if assert_contains "$output" "test-driven-development\|TDD\|failing test\|red-green-refactor" "Mentions TDD explicitly"; then
+    : # pass
+else
+    exit 1
+fi
+
+echo ""
+
 echo "=== All subagent-driven-development skill tests passed ==="
